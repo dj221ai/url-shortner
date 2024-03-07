@@ -6,19 +6,20 @@
         <div class="row mx-3">
             <div class="mx-3 col-6">
                     <h3>Log In to your account!</h3>
+                    <p>Don't have an account? <a href="{% url 'account:register' %}">Sign up</a></p>
                     <form method="post" action="{% url 'account:signin' %}" class="mb-2">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username" Required>
+                            <input type="text" class="form-control" id="username" name="username" Required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password" Required>
+                            <input type="password" class="form-control" id="password" name="password" Required>
                         </div>
                         <br/>
 
-                        <button type="submit" class="btn btn-primary">Log In</button>
+                        <button type="submit" class="btn btn-success form-control">Log In</button>
                     </form>
 
 
