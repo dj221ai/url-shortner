@@ -14,8 +14,7 @@
 </style>
 <nav class="navbar navbar-expand-md navbar-default fixed-top navbar-dark bg-dark border-bottom">
     <a class="navbar-brand mx-2" href="{% url 'shortner:index' %}">
-        <img src="{% static '/images/shortner.jpg' %}" alt="Shortner" width="100" height="80">
-
+        S  H  O  R  T  N  R
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -38,30 +37,9 @@
                 </a>
                 </li>
             </ul>
-    {% else %}
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                <a class="nav-link" href="{% url 'shortner:index' %}">Home</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav my-2 my-md-0 mr-md-3">
-                <li class="nav-item active">
-                <a class="nav-link" href="{% url 'account:register' %}">
-                    <button class="btn btn-outline-primary my-2 my-sm-0 float-end" type="submit">Register</button>
-                </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav my-2 my-md-0 mr-md-3">
-                <li class="nav-item active">
-                <a class="nav-link" href="{% url 'account:signin' %}">
-                    <button class="btn btn-outline-primary my-2 my-sm-0 float-end" type="submit">Login</button>
-                </a>
-                </li>
-            </ul>
         </div>
     {% endif %}
   </nav>
-  <hr>
   <br/>
   <br/>
   <br/>

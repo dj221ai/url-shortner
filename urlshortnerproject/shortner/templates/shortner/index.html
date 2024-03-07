@@ -3,11 +3,13 @@
 
 {% block content %}
 <div class="container">
-    <button type="button" class="btn btn-primary" id="openModalBtn">Create + </button>
 
-    {% if request.user.is_authenticated %}
-        
+    {% if not request.user.is_authenticated %}
+        {% include "account/login.html" %}
+
     {% else %}
+        <h4>Welcome, {{ request.user.first_name}}</h4>
+        <button type="button" class="btn btn-primary" id="openModalBtn">Create + </button>
     {% endif %}
 
 </div>
