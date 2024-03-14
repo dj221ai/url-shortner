@@ -5,18 +5,18 @@
 <div class="container">
 
     <div class="row d-flex p-2 bd-highlight">
-        <div class="col d-flex p-2 bd-highlight">
             {% if not request.user.is_authenticated %}
                 {% include "account/login.html" %}
 
             {% else %}
                 {% comment %} <h4>Welcome, {{ request.user.first_name}}</h4> {% endcomment %}
-                <div class="col-md-8 mx-2 my-2">
-                    <input type="text" class="form-control my-3" id="createshortner" aria-describedby="shortner">
-                    <button type="button" class="btn btn-primary" id="openModalBtn">Short Url</button>
-                </div>
+                <form method='POST' action="#">
+                    <div class="col-md-8 mx-2 my-2">
+                        <input type="text" class="my-3 form-control" id="createshortner" aria-describedby="shortner">
+                        <button type="submit" class="btn btn-success" id="createbtn">Create Url</button>
+                    </div>
+                </form>
             {% endif %}
-        </div>
     </div>
 
 </div>
