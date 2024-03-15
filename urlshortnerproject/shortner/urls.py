@@ -5,5 +5,6 @@ app_name = 'shortner'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('links', views.links, name='links'),
 ]
 
