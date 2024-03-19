@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-g##u81a&v9i_q_o68u#aeje%(h0&^0lll7d$h5709h26-4cqc8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shortner',
     'account',
+    'apishortner',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +131,11 @@ STATICFILES_DIRS = [
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'assignplayers')
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
