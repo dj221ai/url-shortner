@@ -1,30 +1,33 @@
 from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
 from .forms import ShortenedURLForm
 from .models import ShortenedURL
 import string, secrets
+import pyshorteners
 
 # Create your views here.
 def index(request):
-    if request.method == 'POST':
+    context = {
+        'text': "create short Urls for Your Resume or projects and share with the world. it's free"
+    }
+    return render(request, 'shortner/index.html', context=context)
+
+
+
+def createShortUrls(request):  # sourcery skip: extract-method
+    if request.method == "POST":
         form = ShortenedURLForm(request.POST)
-
         if form.is_valid():
-            original_data = form.cleaned_data['original_url']
-            random_chars_list = list(string.ascii_letters)
-            random_chars = ''.join(secrets.choice(random_chars_list) for _ in range(7))
-
-            while len(ShortenedURL.objects.filter(short_url=random_chars)) != 0:
-                for _ in range(7):
-                    random_chars+=secrets.choice(random_chars_list)
-            s=ShortenedURL(original_url=original_data, short_url=random_chars)
+            original_value = form.cleaned_data['original_url']
+            short_value = pyshorteners.Shortener()
+            short_value=short_value.tinyurl.short(original_value)
+            s=ShortenedURL(original_url=original_value, short_url=short_value)
             s.save()
-            return render(request, 'shortner/urlcreated.html', {'chars':random_chars})
+            return render(request, 'shortner/links.html')
     else:
         form = ShortenedURLForm()
-        context = {
-            'form': form
-        }
-        return render(request, 'shortner/index.html', context)
+        context = {'form': form}
+        return render(request, 'shortner/create.html', context)
 
 
 def links(request):
