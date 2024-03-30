@@ -9,14 +9,9 @@
                 {% include "account/login.html" %}
 
             {% else %}
-                {% comment %} <h4>Welcome, {{ request.user.first_name}}</h4> {% endcomment %}
-                <form method='POST' action="{% url 'shortner:links' %}">
-                    {% csrf_token %}
-                    <div class="col-md-8 mx-2 my-2">
-                        {{ form.as_p }}
-                            <center><button type="submit" class="btn btn-success" id="createbtn">Create Url</button></center>
-                    </div>
-                </form>
+                <h1 class="mx-2 my-2">URLShort Url Shortener</h1>
+                <a href="{% url 'shortner:create' %}"><button type="button" class="btn btn-success mx-2 my-2">Create New URL</button></a>
+                <p class="mx-2 my-2">{{text| title}}</p>
             {% endif %}
     </div>
 
