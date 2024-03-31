@@ -10,4 +10,4 @@ class ShortenedURL(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return f'{self.original_url} -------> {self.short_url}'
+        return f'{self.user} ----> {self.short_url}'
