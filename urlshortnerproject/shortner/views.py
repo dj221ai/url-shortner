@@ -1,10 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from .forms import ShortenedURLForm
-from .models import ShortenedURL
-import string, secrets
+import json
 import pyshorteners
-from django.contrib.auth.models import User
+from .models import ShortenedURL
+from django.shortcuts import render
+from .forms import ShortenedURLForm
 
 # Create your views here.
 def index(request):
@@ -32,9 +30,9 @@ def createShortUrls(request): # sourcery skip: extract-method
 
 
 def links(request):
-    queryset=ShortenedURL.objects.filter(user=request.user)
-    print("queryset ---->>> ", queryset)
-
-    # print(user, request.user)
-
-    return render(request, 'shortner/links.html')
+    url_data = ShortenedURL.objects.filter(user=request.user)
+    url_data = list(url_data)
+    context = {
+        'datas': url_data
+    }
+    return render(request, 'shortner/links.html', context)
