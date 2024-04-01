@@ -7,6 +7,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('create/', views.createShortUrls, name='create'),
     path('links/', views.links, name='links'),
-    # path('<str:url>/', views.redirect_view, name='redirect_view')
+    path('delete/<str:id>/', views.deleteView, name='deleteView')
 ]
 

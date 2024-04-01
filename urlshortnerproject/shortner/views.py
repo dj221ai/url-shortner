@@ -1,7 +1,7 @@
 import json
 import pyshorteners
 from .models import ShortenedURL
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .forms import ShortenedURLForm
 
 # Create your views here.
@@ -36,5 +36,9 @@ def links(request):
         'datas': url_data
     }
     return render(request, 'shortner/links.html', context)
+
+def deleteView(request, id):
+    queryset=ShortenedURL.objects.filter(id=id).delete()
+    return render(request, 'shortner/links.html')
 
 
