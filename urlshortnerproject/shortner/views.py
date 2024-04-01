@@ -28,7 +28,7 @@ def createShortUrls(request): # sourcery skip: extract-method
         context = {'form': form}
         return render(request, 'shortner/create.html', context)
 
-
+# all available links and redirect views
 def links(request):
     url_data = ShortenedURL.objects.filter(user=request.user)
     url_data = list(url_data)
@@ -36,3 +36,5 @@ def links(request):
         'datas': url_data
     }
     return render(request, 'shortner/links.html', context)
+
+
